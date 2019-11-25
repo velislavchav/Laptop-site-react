@@ -48,7 +48,7 @@
 /* btn back */
 
   #btnBackToAllProducts button {
-    background-color: #4CAF50; /* Green */
+    background-color: rgba(0, 136, 169, 1);
     border: none;
     color: white;
     margin-top: 15px;
@@ -63,6 +63,6 @@
   }
 
   #btnBackToAllProducts button:hover {
-    background-color: white; /* Green */
+    background-color: #24252A;
     color: #4CAF50;
   }

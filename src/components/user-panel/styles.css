@@ -1,9 +1,6 @@
-.registerPanel {
-  width: 100%;
-  height: 618px;
-  padding: 0px;
-  margin: 0px;
-  background: url(https://subtlepatterns.com/patterns/tweed.png);
+#backgroundUserRegisterLoginPage {
+  max-width: 100%;
+  max-height: 100%; 
 }
 
 form div + div {
@@ -47,7 +44,7 @@ textarea {
   background-color: #24252A;
 }
 
-.buttonRegister button {
+.button-formAction button {
   background-color: rgba(0, 136, 169, 1);
   border: none;
   color: white;
@@ -61,6 +58,6 @@ textarea {
   transition: all 0.3 ease 0s;
 }
 
-.buttonRegister button:hover {
+.button-formAction button:hover {
   background-color: rgba(0, 136, 169, 0.8);
 }

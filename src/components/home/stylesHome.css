@@ -1,5 +1,13 @@
-/* .Home {
-    font-family: sans-serif;
-    text-align: center;
-  }
-   */
+#wallpaper {
+    max-width: 100%;
+    max-height: 100%;
+}
+
+#wallpaper-title {
+    border: 1px solid white;
+    color: white;
+    position: absolute;
+    top: 280px;
+    left: 10%;
+    padding: 15px;
+}

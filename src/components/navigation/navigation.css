@@ -7,15 +7,15 @@
 }
 
 #logoNavbar {
-    height: 43px;
-    widows: 43px;
+    height: 40px;
+    widows: 40px;
     cursor: pointer;
 }
 
 header li, header a, header button {
     font-family: "Montserrat", sans-serif;
     font-weight: 500;
-    font-size: 16px;
+    font-size: 17px;
     color: #edf0f1;
     text-decoration: none;
 } 
@@ -25,7 +25,8 @@ header li, header a, header button {
     display: flex; 
     justify-content: space-between;
     align-items: center;
-    padding: 30px 10%; 
+    padding: 1% 7%; 
+    padding-top: 2%;
 }
 
 header .nav__links {
@@ -46,7 +47,7 @@ header .nav__links li a:hover {
 }
 
 header button {
-    padding: 9px 25px;
+    padding: 2px 25px;
     background-color: rgba(0, 136, 169, 1);
     border: none;
     border-radius: 50px;

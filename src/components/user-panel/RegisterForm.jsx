@@ -1,9 +1,11 @@
-import React from 'react'
-import './registerStyles.css'
+import React, { Fragment } from 'react'
+import './styles.css'
+import background from "./background.jpg"
 
 const RegisterForm = () => {
     return (
-        <div className="registerPanel">
+        <Fragment>
+            <img id="backgroundUserRegisterLoginPage" alt="background" src={background} />
             <div id="formStyling">
                 <form action="/my-handling-form-page" method="POST">
                     <div>
@@ -22,13 +24,12 @@ const RegisterForm = () => {
                         {/* <label for="msg">Message:</label> */}
                         <textarea id="msg" name="user_message" placeholder="Something about you"></textarea>
                     </div>
-                    <div class="buttonRegister">
+                    <div class="button-formAction">
                         <button type="submit">Register</button>
                     </div>
                 </form>
             </div>
-        </div>
-
+        </Fragment >
     )
 }
 
