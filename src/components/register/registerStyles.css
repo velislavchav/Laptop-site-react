@@ -1,0 +1,66 @@
+.registerPanel {
+  width: 100%;
+  height: 618px;
+  padding: 0px;
+  margin: 0px;
+  background: url(https://subtlepatterns.com/patterns/tweed.png);
+}
+
+form div + div {
+  margin-top: 1em;
+}
+
+form div:first-child{
+  margin-top: 2em;
+}
+
+form div:last-child{
+  margin-bottom: 2em;
+}
+
+input, textarea {
+  text-align: center;
+  font: 1em sans-serif;
+  width: 300px;
+  box-sizing: border-box;
+  border: 1px solid #999;
+}
+
+input:focus, textarea:focus {
+  border-color: #000;
+}
+
+textarea {
+  vertical-align: top;
+  height: 5em;
+}
+
+#formStyling {
+  position: absolute;
+  left: 35%;
+  right: 35%;
+  top: 32%;
+  width: 30%;
+  border: 1px solid #CCC;
+  border-radius: 1em;
+  text-align: center;
+  background-color: #24252A;
+}
+
+.buttonRegister button {
+  background-color: rgba(0, 136, 169, 1);
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.3 ease 0s;
+}
+
+.buttonRegister button:hover {
+  background-color: rgba(0, 136, 169, 0.8);
+}

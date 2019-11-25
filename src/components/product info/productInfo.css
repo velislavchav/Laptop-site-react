@@ -26,6 +26,8 @@
       margin: 30px;
   }
 
+/* table */
+
   table {
       width: 100%;
       text-align: center;
@@ -37,4 +39,30 @@
 
   .specsTableData {
       font-weight: bold;
+  }
+
+  .priceTdData {
+      background-color: blanchedalmond;
+  }
+
+/* btn back */
+
+  #btnBackToAllProducts button {
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    margin-top: 15px;
+    padding: 14px 40px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    width: 100%;
+    -webkit-transition-duration: 0.4s; 
+  transition-duration: 0.4s;
+  }
+
+  #btnBackToAllProducts button:hover {
+    background-color: white; /* Green */
+    color: #4CAF50;
   }

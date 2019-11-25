@@ -1,4 +1,5 @@
 import React, { Fragment } from 'react'
+import { Link } from 'react-router-dom'
 import data from "../../data"
 import "./productInfo.css"
 
@@ -64,10 +65,18 @@ class ProductInfo extends React.Component {
                                     <td className="specsTableData">Warranty</td>
                                     <td>{this.state.waranty}</td>
                                 </tr>
+                                <tr className="priceTdData">
+                                    <td className="specsTableData">PRICE</td>
+                                    <td>{this.state.price} $</td>
+                                </tr>
                             </tbody>
                         </table>
                     </div>
+                    <div id="btnBackToAllProducts">
+                        <Link to="/products"><button>BACK TO ALL PRODUCTS</button></Link>
+                    </div>
                 </div>
+
             </Fragment>
         );
     }

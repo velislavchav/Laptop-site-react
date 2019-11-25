@@ -6,9 +6,10 @@
     padding: 0;
 }
 
-img {
+#logoNavbar {
     height: 43px;
     widows: 43px;
+    cursor: pointer;
 }
 
 header li, header a, header button {
@@ -25,12 +26,6 @@ header li, header a, header button {
     justify-content: space-between;
     align-items: center;
     padding: 30px 10%; 
-    
-}
-
-
-.logo {
-cursor: pointer;
 }
 
 header .nav__links {

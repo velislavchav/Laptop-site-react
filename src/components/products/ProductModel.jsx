@@ -59,7 +59,7 @@ const ProductModel = (props) => {
                                 <li><b>HDD:</b> {HDD}</li>
                             </Typography>
                             <Typography variant="h4" color="primary" component="h2">
-                                Price: {price}
+                                Price: {price} $
                             </Typography>
                         </CardContent>
                     </CardActionArea>
