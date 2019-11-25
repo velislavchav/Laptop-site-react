@@ -1,9 +1,10 @@
 import React from 'react'
 import Grid from '@material-ui/core/Grid';
 import ProductModel from './ProductModel'
+import data from '../../data'
 
-const Products = (props) => {
-    let productsData = props.data;
+const Products = () => {
+    let productsData = data.slice('');
 
     const products = productsData.map(product => {
         return (
@@ -12,7 +13,7 @@ const Products = (props) => {
     })
 
     return (
-        <Grid container spacing={1}>
+        <Grid container spacing={2}>
             {products}
         </Grid>
     );
