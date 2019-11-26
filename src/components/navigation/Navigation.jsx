@@ -14,7 +14,7 @@ const Navigation = () => {
                     <li><a href="/register">Register</a></li>
                     <li><a href="/login">Login</a></li>
                     <li><a href="/profile">Profile</a></li>
-                    <li><a href="/profile">Gallery</a></li>
+                    <li><a href="/gallery">Gallery</a></li>
                 </ul>
             </nav>
             <a className="cta" href="/about"><button>CONTACT</button></a>

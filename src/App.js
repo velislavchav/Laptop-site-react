@@ -6,6 +6,7 @@ import Products from './components/products/Products'
 import ProductInfo from './components/product info/ProductInfo';
 import RegisterForm from './components/user-panel/RegisterForm';
 import LoginForm from './components/user-panel/LoginForm';
+import Slider from './components/gallery/Slider';
 import Home from './components/home/Home';
 
 function App() {
@@ -18,6 +19,7 @@ function App() {
         <Route path="/product/:id" strict component={ProductInfo} />
         <Route path="/register" strict component={RegisterForm} />
         <Route path="/login" strict component={LoginForm} />
+        <Route path="/gallery" strict component={Slider} />
         <Route path="/" strict exact component={Home} />
       </Router>
     </Fragment>
