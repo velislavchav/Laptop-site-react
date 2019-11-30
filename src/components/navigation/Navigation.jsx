@@ -1,23 +1,26 @@
 import React from 'react'
+import { Link } from "react-router-dom";
 import "./navigation.css"
 import logo from "./logo.png"
 
 const Navigation = () => {
     return (
         <header id="flex">
-            <img src={logo} id="logoNavbar" alt="logo" />
+
+            <Link to="/"><img src={logo} id="logoNavbar" alt="logo" /></Link>
             <nav>
                 <ul className="nav__links">
-                    <li><a href="/">Home</a></li>
-                    <li><a href="/products">Products</a></li>
-                    <li><a href="/create">Create</a></li>
-                    <li><a href="/register">Register</a></li>
-                    <li><a href="/login">Login</a></li>
-                    <li><a href="/profile">Profile</a></li>
-                    <li><a href="/gallery">Gallery</a></li>
+                    {/* <li><Link to="/">Home</Link></li> */}
+                    <li><Link to="/products">Products</Link></li>
+                    <li><Link to="/create-product">Create</Link></li>
+                    <li><Link to="/register">Register</Link></li>
+                    <li><Link to="/login">Login</Link></li>
+                    <li><Link to="/profile">Profile</Link></li>
+                    <li><Link to="/gallery">Gallery</Link></li>
                 </ul>
             </nav>
             <a className="cta" href="/about"><button>CONTACT</button></a>
+
         </header>
     )
 }

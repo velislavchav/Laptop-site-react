@@ -4,7 +4,7 @@ import image from "./wallpaper.jpg"
 
 const Home = () => {
     return (
-        <div class="image-container">
+        <div className="image-container">
             <img id="wallpaper" alt="wallpaper" src={image} />
             <div id="wallpaper-title">
                 <h1> Laptop.bg </h1>

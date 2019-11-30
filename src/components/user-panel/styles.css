@@ -3,6 +3,7 @@
   max-height: 100%; 
 }
 
+/* Form styling */
 form div + div {
   margin-top: 1em;
 }
@@ -36,7 +37,7 @@ textarea {
   position: absolute;
   left: 35%;
   right: 35%;
-  top: 32%;
+  top: 23%;
   width: 30%;
   border: 1px solid #CCC;
   border-radius: 1em;
@@ -61,3 +62,23 @@ textarea {
 .button-formAction button:hover {
   background-color: rgba(0, 136, 169, 0.8);
 }
+
+#titleForm {
+  color: white;
+  margin-top: 25px;
+}
+
+/* div with checkbox + lables */
+
+#WindowsCheckbox {
+  width: auto;
+  color: white;
+  text-align: center;
+}
+
+.labels {
+  color: white;
+  padding-right: 20px;
+}
+
+/*  */

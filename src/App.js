@@ -1,27 +1,29 @@
 import React, { Fragment } from 'react';
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import { BrowserRouter, Route } from "react-router-dom";
 import Navigation from './components/navigation/Navigation'
 import About from './components/about/About'
 import Products from './components/products/Products'
 import ProductInfo from './components/product info/ProductInfo';
-import RegisterForm from './components/user-panel/RegisterForm';
-import LoginForm from './components/user-panel/LoginForm';
+import Register from './components/user-panel/Register';
+import Login from './components/user-panel/Login';
+import Create from './components/user-panel/CreateProduct';
 import Slider from './components/gallery/Slider';
 import Home from './components/home/Home';
 
 function App() {
   return (
     <Fragment>
-      <Navigation />
-      <Router>
-        <Route path="/products" exact component={Products} />
-        <Route path="/about" component={About} />
-        <Route path="/product/:id" strict component={ProductInfo} />
-        <Route path="/register" strict component={RegisterForm} />
-        <Route path="/login" strict component={LoginForm} />
-        <Route path="/gallery" strict component={Slider} />
-        <Route path="/" strict exact component={Home} />
-      </Router>
+      <BrowserRouter>
+        <Navigation />
+        <Route path="/" exact component={Home} />
+        <Route path="/products" exact strict component={Products} />
+        <Route path="/about" exact strict component={About} />
+        <Route path="/product/:id" exact strict component={ProductInfo} />
+        <Route path="/register" exact strict component={Register} />
+        <Route path="/login" exact strict component={Login} />
+        <Route path="/gallery" exact strict component={Slider} />
+        <Route path="/create-product" exact strict component={Create} />
+      </BrowserRouter>
     </Fragment>
 
   );
