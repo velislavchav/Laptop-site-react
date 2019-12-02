@@ -1,20 +1,15 @@
-import React, { Fragment } from 'react'
+import React, { Fragment, Component } from 'react'
 import { Link } from 'react-router-dom'
-import data from "../../data"
+import userServices from '../../shared/helpers/userService'
 import "./productInfo.css"
 
+class ProductInfo extends Component {
+    state = {}
 
-class ProductInfo extends React.Component {
-    constructor() {
-        super();
-        this.state = {
-        };
-    }
-
-    componentDidMount() {
-        let id = this.props.match.params.id
-        const chosenProduct = data.find(pr => +pr.id === +id);
-        this.setState({ ...chosenProduct })
+    async componentDidMount() {
+        const productId = await this.props.match.params.id;
+        const product = await userServices.loadProduct(productId);
+        await this.setState(product)
     }
 
     render() {
@@ -26,7 +21,7 @@ class ProductInfo extends React.Component {
                 <div className="description">
                     <h2 id="subtitleProductInfo">{this.state.title}</h2>
                     <hr />
-                    <span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe corrupti ducimus aliquid quidem voluptates, unde commodi minima dolore deleniti, iste obcaecati, sequi nam officiis magni accusantium neque velit veniam nisi.</span>
+                    <span>{this.state.description}</span>
                     <hr />
                     <div className="tableWrapper">
                         <h3>Specifications:</h3>
@@ -43,27 +38,23 @@ class ProductInfo extends React.Component {
                                 </tr>
                                 <tr>
                                     <td className="specsTableData">HDD</td>
-                                    <td>{this.state.HDD}</td>
+                                    <td>{this.state.HDD} GB</td>
                                 </tr>
                                 <tr>
                                     <td className="specsTableData">RAM</td>
-                                    <td>{this.state.RAM}</td>
-                                </tr>
-                                <tr>
-                                    <td className="specsTableData">Windows</td>
-                                    <td>{this.state.windowsInstalled}</td>
+                                    <td>{this.state.RAM} GB</td>
                                 </tr>
                                 <tr>
                                     <td className="specsTableData">SSD</td>
-                                    <td>{this.state.SSD}</td>
+                                    <td>{this.state.SSD} GB</td>
                                 </tr>
                                 <tr>
                                     <td className="specsTableData">Weight</td>
-                                    <td>{this.state.weight}</td>
+                                    <td>{this.state.weight} kg</td>
                                 </tr>
                                 <tr>
                                     <td className="specsTableData">Warranty</td>
-                                    <td>{this.state.waranty}</td>
+                                    <td>{this.state.warranty} years</td>
                                 </tr>
                                 <tr className="priceTdData">
                                     <td className="specsTableData">PRICE</td>
@@ -76,10 +67,10 @@ class ProductInfo extends React.Component {
                         <Link to="/products"><button>BACK TO ALL PRODUCTS</button></Link>
                     </div>
                 </div>
-
             </Fragment>
         );
     }
 }
+
 
 export default ProductInfo

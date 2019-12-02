@@ -5,7 +5,7 @@
 
 /* Form styling */
 form div + div {
-  margin-top: 1em;
+  margin-top: 1.5em;
 }
 
 form div:first-child{
@@ -68,17 +68,14 @@ textarea {
   margin-top: 25px;
 }
 
-/* div with checkbox + lables */
+/* errors  */
 
-#WindowsCheckbox {
-  width: auto;
-  color: white;
+.validateInputs {
+  color: red;
   text-align: center;
+  font: 1em sans-serif;
+  margin: 3px 0;
+  width: 300px;
+  position: relative;
+  left: 17%;
 }
-
-.labels {
-  color: white;
-  padding-right: 20px;
-}
-
-/*  */

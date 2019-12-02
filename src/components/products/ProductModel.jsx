@@ -2,15 +2,11 @@ import React from 'react'
 import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
-// import Card from '@material-ui/core/Card';
 import CardActionArea from '@material-ui/core/CardActionArea';
-// import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
-// import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import { Link } from "react-router-dom";
-
 
 const styles = {
     paper: {
@@ -35,8 +31,8 @@ const useStyles = makeStyles(styles);
 
 const ProductModel = (props) => {
     const classes = useStyles();
-    const { title, price, imageUrl, CPU, GPU, RAM, HDD, id } = props.data;
-    let getLinkTo = `/product/${id}`
+    const { title, price, imageUrl, CPU, GPU, RAM, HDD, _id } = props.data;
+    let getLinkTo = `/product/${_id}`
 
     return (
         <Grid item xs={4}>
@@ -66,7 +62,6 @@ const ProductModel = (props) => {
                 </Paper>
             </Link>
         </Grid>
-
     );
 }
 
