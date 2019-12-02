@@ -11,14 +11,13 @@ class Register extends Component {
     rePasswordOnChangeHandler = this.props.controlChangeHandlerFactory('repassword');
     userDescriptionOnChangeHandler = this.props.controlChangeHandlerFactory('userDescription');
 
-    submitHandler = () => {
-        this.props.runValidations()
-        const errors = this.props.getFormErrorState();
+    submitHandler = async () => {
+        await this.props.runValidations()
+        const errors = await this.props.getFormErrorState();
         if (!!errors) { return; }
-        const data = this.props.getFormState();
-        userService.register(data).then(() => {
-            this.props.history.push('/login');
-        });
+        const data = await this.props.getFormState();
+        await userService.register(data)
+        await this.props.history.push('/login');
         console.log('registered succesfully');
     };
 

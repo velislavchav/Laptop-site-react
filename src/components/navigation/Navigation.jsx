@@ -17,8 +17,8 @@ const Navigation = ({ isLogged }) => {
                     <li><Link to="/">Home</Link></li>
                     {isLogged && <li><Link to="/products">Products</Link></li>}
                     {isLogged && <li><Link to="/create-product">Create</Link></li>}
-                    <li><Link to="/register">Register</Link></li>
-                    <li><Link to="/login">Login</Link></li>
+                    {!isLogged && <li><Link to="/register">Register</Link></li>}
+                    {!isLogged && <li><Link to="/login">Login</Link></li>}
                     {isLogged && <li><Link to="/profile">Profile</Link></li>}
                     <li><Link to="/about">About us</Link></li>
                     {isLogged && <li><a href="/" onClick={handleClickLogout}>Logout</a></li>}

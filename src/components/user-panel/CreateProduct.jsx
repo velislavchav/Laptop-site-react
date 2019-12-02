@@ -17,16 +17,13 @@ class CreateProduct extends Component {
     descriptionOnChangeHandler = this.props.controlChangeHandlerFactory('description');
     priceOnChangeHandler = this.props.controlChangeHandlerFactory('price');
 
-    submitHandler = () => {
-        this.props.runValidations()
-        const errors = this.props.getFormErrorState();
+    submitHandler = async () => {
+        await this.props.runValidations()
+        const errors = await this.props.getFormErrorState();
         if (!!errors) { return; }
-        const data = this.props.getFormState();
-        userService.createProduct(data)
-            .then(() => {
-                this.props.history.push('/');
-            });
-        // console.log('registered succesfully');
+        const data = await this.props.getFormState();
+        await userService.createProduct(data)
+        await this.props.history.push('/');
     };
 
     getFirstControlError = name => {
@@ -107,13 +104,13 @@ class CreateProduct extends Component {
 }
 
 const initialFormState = {
-    title: "",
+    title: null,
     imageUrl: "https://logox.com/logox/uploads/noimage300X300.jpg",
-    CPU: "",
-    GPU: "",
-    HDD: "",
-    RAM: "",
-    SSD: "",
+    CPU: null,
+    GPU: null,
+    HDD: null,
+    RAM: null,
+    SSD: null,
     weight: 0,
     warranty: 0,
     price: 1,
@@ -123,7 +120,7 @@ const initialFormState = {
 const schema = yup.object({
     title: yup.string('Title shoud be a string')
         .required('Title is required')
-        .min(3, 'Title should be more than 3 chars'),
+        .min(5, 'Title should be more than 5 chars'),
 
     imageUrl: yup.string('Image URL shoud be a string')
         .default("https://logox.com/logox/uploads/noimage300X300.jpg"),

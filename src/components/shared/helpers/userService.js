@@ -45,10 +45,9 @@ const userService = {
             })
     },
 
-    logout: (history) => {
+    logout: () => {
         eraseCookie('x-auth-token');
         eraseCookie('kinveyAuth');
-        // history.push('/');
     },
 
     createProduct: (data) => {
@@ -61,8 +60,9 @@ const userService = {
                 'Content-type': 'application/json',
                 'Authorization': tokenForCreatingProduct,
             },
-        }).then(res => res.json())
-            .then(console.log)
+        }).then(res => {
+            return res.json()
+        })
     },
 
     loadAllProducts: async () => {

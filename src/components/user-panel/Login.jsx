@@ -6,11 +6,11 @@ class Login extends Component {
     usernameChangeHandler = this.props.controlChangeHandlerFactory('username');
     passwordChangeHandler = this.props.controlChangeHandlerFactory('password');
 
-    submitHandler = () => {
-        const errors = this.props.getFormErrorState();
+    submitHandler = async () => {
+        const errors = await this.props.getFormErrorState();
         if (!!errors) { return; }
-        const data = this.props.getFormState();
-        this.props.login(this.props.history, data);
+        const data = await this.props.getFormState();
+        await this.props.login(this.props.history, data);
     }
 
     render() {

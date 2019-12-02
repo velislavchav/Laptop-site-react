@@ -1,5 +1,5 @@
 import React, { Fragment, Component } from 'react';
-import { BrowserRouter, Route } from "react-router-dom";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
 import userService from './components/shared/helpers/userService';
 
 import Navigation from './components/navigation/Navigation'
@@ -11,6 +11,8 @@ import Login from './components/user-panel/Login';
 import Create from './components/user-panel/CreateProduct';
 import Slider from './components/gallery/Slider';
 import Home from './components/home/Home';
+import NotFound from './components/notFound/notFound';
+
 
 function render(Cmp, otherProps) {
   return function (props) {
@@ -60,17 +62,21 @@ class App extends Component {
       <Fragment>
         <BrowserRouter>
           <Navigation isLogged={isLogged} />
-          <Route path="/" exact component={Home} />
-          <Route path="/products" exact strict render={render(Products, { isLogged })} />
-          <Route path="/about" exact strict component={About} />
-          <Route path="/product/:id" exact strict component={ProductInfo} />
-          <Route path="/register" exact strict render={render(Register, { isLogged })} />
-          {/* <Route path="/register" exact strict component={Register} /> */}
-          <Route path="/login" exact strict render={render(Login, { isLogged, login: this.login })} />
-          {/* <Route path="/login" exact strict component={Login}  /> */}
-          <Route path="/gallery" exact strict component={Slider} />
-          <Route path="/create-product" exact strict render={render(Create, { isLogged })} />
-          {/* <Route path="/create-product" exact strict component={Create} /> */}
+          <Switch>
+            <Route path="/" exact component={Home} />
+            <Route path="/products" exact strict render={render(Products, { isLogged })} />
+            {/* <Route path="/products" exact strict component={Products} /> */}
+
+            <Route path="/about" exact strict component={About} />
+            <Route path="/product/:id" exact strict component={ProductInfo} />
+            <Route path="/register" exact strict render={render(Register, { isLogged })} />
+            {/* <Route path="/register" exact strict component={Register} /> */}
+            <Route path="/login" exact strict render={render(Login, { isLogged, login: this.login })} />
+            {/* <Route path="/login" exact strict component={Login}  /> */}
+            <Route path="/gallery" exact strict component={Slider} />
+            <Route path="/create-product" exact strict render={render(Create, { isLogged })} />
+            <Route component={NotFound} />
+          </Switch>
         </BrowserRouter>
       </Fragment>
 
