@@ -3,7 +3,7 @@ const appSecret = "5dfa79164d614a26bd0693b6701a3380";
 const url = 'https://baas.kinvey.com';
 const auth = btoa(`${appKey}:${appSecret}`);
 const authorization = `Basic ${auth}`
-const { setCookie, getCookie } = require('./cookieSetter')
+const { setCookie, eraseCookie, getCookie } = require('./cookieSetter')
 
 const userService = {
     register: function (data) {
@@ -45,8 +45,10 @@ const userService = {
             })
     },
 
-    logout: () => {
-        // eraseCookie(cookieName)
+    logout: (history) => {
+        eraseCookie('x-auth-token');
+        eraseCookie('kinveyAuth');
+        // history.push('/');
     },
 
     createProduct: (data) => {

@@ -37,13 +37,13 @@ class App extends Component {
     };
   }
 
-  logout = (history) => {
-    userService.logout().then(() => {
-      this.setState({ isLogged: false });
-      history.push('/');
-      return null;
-    });
-  }
+  // logout = (history) => {
+  //   userService.logout().then(() => {
+  //     this.setState({ isLogged: false });
+  //     history.push('/');
+  //     return null;
+  //   });
+  // }
 
   login = (history, data) => {
     userService.login(data).then(() => {
@@ -59,7 +59,7 @@ class App extends Component {
     return (
       <Fragment>
         <BrowserRouter>
-          <Navigation />
+          <Navigation isLogged={isLogged} />
           <Route path="/" exact component={Home} />
           <Route path="/products" exact strict render={render(Products, { isLogged })} />
           <Route path="/about" exact strict component={About} />
