@@ -1,0 +1,29 @@
+/* components warpper */
+/* .miniProductsUser {
+    width: 100%;
+    text-align: center;
+    margin-top: 5%;
+    height: auto;
+    border: 1px solid red;
+} */
+
+.miniImageUserProducts {
+    width: 100%;
+    height: 200px;
+    padding: 10px;
+    overflow: hidden;
+    /* display: inline-block; */
+}
+
+.miniProduct {
+    float: left;
+    width: 33%;
+    text-align: center;
+    margin: 2% 0;
+}
+
+.miniProduct ul {
+    list-style:none;
+    text-decoration: none;
+}
+

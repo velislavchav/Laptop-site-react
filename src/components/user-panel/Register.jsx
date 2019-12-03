@@ -16,6 +16,9 @@ class Register extends Component {
         const errors = await this.props.getFormErrorState();
         if (!!errors) { return; }
         const data = await this.props.getFormState();
+        if (data.imageUrl === "") {
+            data.imageUrl = "http://pngimages.net/sites/default/files/anonymous-user-png-image-83861.png"
+        }
         await userService.register(data)
         await this.props.history.push('/login');
         console.log('registered succesfully');
@@ -25,7 +28,6 @@ class Register extends Component {
         const errorState = this.props.getFormErrorState();
         return errorState && errorState[name] && errorState[name][0];
     };
-
 
     render() {
         const usernameError = this.getFirstControlError('username');

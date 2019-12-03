@@ -21,7 +21,10 @@ class CreateProduct extends Component {
         await this.props.runValidations()
         const errors = await this.props.getFormErrorState();
         if (!!errors) { return; }
-        const data = await this.props.getFormState();
+        let data = await this.props.getFormState();
+        if (data.imageUrl === "") {
+            data.imageUrl = "https://logox.com/logox/uploads/noimage300X300.jpg"
+        }
         await userService.createProduct(data)
         await this.props.history.push('/');
     };

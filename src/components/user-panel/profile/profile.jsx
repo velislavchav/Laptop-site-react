@@ -1,8 +1,9 @@
 import React, { Fragment, Component } from "react";
 import { Link } from "react-router-dom";
-import { getCookie } from "../../shared/helpers/cookieSetter"
-import userService from "../../shared/helpers/userService"
-import "./profileStyles.css"
+import { getCookie } from "../../shared/helpers/cookieSetter";
+import userService from "../../shared/helpers/userService";
+import MiniProducts from "./products-small/MiniProducts"
+import "./profileStyles.css";
 
 class Profile extends Component {
     state = {}
@@ -23,7 +24,6 @@ class Profile extends Component {
                         alt="profile" />
                 </div>
                 <div className="profileDescription">
-                    <h2 id="tableProfileTitle">Profile </h2>
                     <table border="1">
                         <tbody>
                             <tr>
@@ -40,13 +40,12 @@ class Profile extends Component {
                             </tr>
                         </tbody>
                     </table>
-
                     <div id="btnEditProfile">
                         <Link to="/edit-profile"><button>EDIT PROFILE</button></Link>
                     </div>
+                    <h4 id="miniProductsTitle"> Products created by me </h4><hr />
+                    <MiniProducts />
                 </div>
-
-                {/* <Link to="/my-products"><button>See my offers</button></Link> */}
             </Fragment>
         )
     }
