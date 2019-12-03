@@ -11,6 +11,7 @@ import Login from './components/user-panel/Login';
 import Create from './components/user-panel/CreateProduct';
 import Slider from './components/gallery/Slider';
 import Home from './components/home/Home';
+import Profile from './components/user-panel/profile/profile';
 import NotFound from './components/notFound/notFound';
 
 
@@ -49,8 +50,7 @@ class App extends Component {
 
   login = (history, data) => {
     userService.login(data).then(() => {
-      let user_id = data._id;
-      this.setState({ isLogged: true, user_id });
+      this.setState({ isLogged: true });
       history.push('/');
     })
       .catch(err => console.log)
@@ -58,6 +58,7 @@ class App extends Component {
 
   render() {
     const { isLogged } = this.state;
+
     return (
       <Fragment>
         <BrowserRouter>
@@ -66,6 +67,7 @@ class App extends Component {
             <Route path="/" exact component={Home} />
             <Route path="/products" exact strict render={render(Products, { isLogged })} />
             {/* <Route path="/products" exact strict component={Products} /> */}
+            <Route path="/profile" exact strict component={Profile} />
 
             <Route path="/about" exact strict component={About} />
             <Route path="/product/:id" exact strict component={ProductInfo} />

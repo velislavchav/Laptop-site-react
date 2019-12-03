@@ -29,14 +29,17 @@ const userService = {
             .then(res => res.json())
             .then(data => {
                 if (!data.error) {
-                    const { username, password, _kmd } = data;   // user values
+                    const { username, password, _id, _kmd } = data;
                     /// cookie 1
-                    const encodedToken = btoa(`${username}:${password}`);  //username and password cookie
-                    setCookie('x-auth-token', encodedToken, 1);
-                    /// cookie 2 -- for creating product
-                    const encodedKinveyAuthCookie = _kmd.authtoken;  //kinvey auth cookie
-                    setCookie('kinveyAuth', encodedKinveyAuthCookie, 1);
-
+                    const encodedToken = btoa(`${username}:${password}`);
+                    setCookie('x-auth-token', encodedToken, 3);
+                    /// cookie 2 -- for creating product authentication
+                    const encodedKinveyAuthCookie = _kmd.authtoken;
+                    setCookie('kinveyAuth', encodedKinveyAuthCookie, 3);
+                    /// cookie 3 -- for user_id
+                    const encodedUserIdCookie = btoa(_id);
+                    setCookie('usrinf', encodedUserIdCookie, 3);
+                    ///
                     console.log('login succesfully');
                 } else {
                     console.log('Invalid username/password, try again');
@@ -48,6 +51,7 @@ const userService = {
     logout: () => {
         eraseCookie('x-auth-token');
         eraseCookie('kinveyAuth');
+        eraseCookie('usrinf');
     },
 
     createProduct: (data) => {
@@ -89,9 +93,20 @@ const userService = {
         })
         res = await res.json();
         return res
-    }
+    },
 
-
+    getProfileData: async (userID) => {
+        const token = await 'Kinvey ' + getCookie('kinveyAuth');
+        let res = await fetch(`${url}/user/${appKey}/${userID}`, {
+            method: 'GET',
+            headers: {
+                // 'Content-type': 'application/json',
+                'Authorization': token,
+            },
+        })
+        res = await res.json();
+        return res;
+    },
 };
 
 export default userService;

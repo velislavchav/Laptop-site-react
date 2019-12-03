@@ -4,8 +4,8 @@ import "./navigation.css"
 import logo from "./logo.png"
 import userService from '../shared/helpers/userService';
 
-const handleClickLogout = (history) => {
-    userService.logout(history);
+const handleClickLogout = () => {
+    userService.logout();
 }
 
 const Navigation = ({ isLogged }) => {
