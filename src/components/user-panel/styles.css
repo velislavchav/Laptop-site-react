@@ -79,3 +79,9 @@ textarea {
   position: relative;
   left: 17%;
 }
+
+/* spans */
+
+.inputsDescr {
+  color: red;
+}

@@ -12,6 +12,7 @@ import Create from './components/user-panel/CreateProduct';
 import Slider from './components/gallery/Slider';
 import Home from './components/home/Home';
 import Profile from './components/user-panel/profile/profile';
+import EditProfile from './components/user-panel/EditProfile';
 import NotFound from './components/notFound/notFound';
 
 
@@ -68,7 +69,7 @@ class App extends Component {
             <Route path="/products" exact strict render={render(Products, { isLogged })} />
             {/* <Route path="/products" exact strict component={Products} /> */}
             <Route path="/profile" exact strict component={Profile} />
-
+            <Route path="/edit-profile" exact strict component={EditProfile} />
             <Route path="/about" exact strict component={About} />
             <Route path="/product/:id" exact strict component={ProductInfo} />
             <Route path="/register" exact strict render={render(Register, { isLogged })} />

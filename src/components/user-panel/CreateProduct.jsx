@@ -112,7 +112,7 @@ const initialFormState = {
     RAM: null,
     SSD: null,
     weight: 0,
-    warranty: 0,
+    warranty: 2,
     price: 1,
     description: "no description found",
 };

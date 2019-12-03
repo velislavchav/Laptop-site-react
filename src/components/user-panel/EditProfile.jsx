@@ -1,24 +1,28 @@
 import React, { Fragment, Component } from 'react'
 import * as yup from 'yup';
 import withForm from '../shared/hocs/withForm'
+import { Link } from 'react-router-dom'
 import userService from '../shared/helpers/userService';
+import { getCookie } from "../shared/helpers/cookieSetter"
+
 import './styles.css'
 
-class Register extends Component {
+class EditProfile extends Component {
+    state = {}
     usernameOnChangeHandler = this.props.controlChangeHandlerFactory('username');
     emailOnChangeHandler = this.props.controlChangeHandlerFactory('email');
     passwordOnChangeHandler = this.props.controlChangeHandlerFactory('password');
-    imageOnChangeHandler = this.props.controlChangeHandlerFactory('imageUrl');
+    imageOnChangeHandler = this.props.controlChangeHandlerFactory('image');
     userDescriptionOnChangeHandler = this.props.controlChangeHandlerFactory('userDescription');
 
     submitHandler = async () => {
         await this.props.runValidations()
         const errors = await this.props.getFormErrorState();
         if (!!errors) { return; }
-        const data = await this.props.getFormState();
-        await userService.register(data)
-        await this.props.history.push('/login');
-        console.log('registered succesfully');
+        // const data = await this.props.getFormState();
+        // await userService.register(data)
+        // await this.props.history.push('/login');
+        // console.log('registered succesfully');
     };
 
     getFirstControlError = name => {
@@ -26,41 +30,45 @@ class Register extends Component {
         return errorState && errorState[name] && errorState[name][0];
     };
 
+    async componentDidMount() {
+        const userID = await atob(getCookie('usrinf'));
+        const userFound = await userService.getProfileData(userID);
+        await this.setState(userFound)
+    }
 
     render() {
         const usernameError = this.getFirstControlError('username');
         const emailError = this.getFirstControlError('email');
-        const passwordError = this.getFirstControlError('password');
         const imageError = this.getFirstControlError('imageUrl');
+        let { username, email, imageUrl, userDescription } = this.state;
 
         return (
             <Fragment>
                 <img id="backgroundUserRegisterLoginPage" alt="background" src="http://eskipaper.com/images/free-dark-wallpaper-1.jpg" />
                 <div id="formStyling">
-                    <h2 id="titleForm"> Register page </h2>
-                    <span className="inputsDescr"> Only inputs with "*" are required</span>
+                    <h2 id="titleForm"> Edit profile </h2>
                     <form action="/" method="POST">
                         <div>
-                            <input type="text" name="username" placeholder="Username*" onChange={this.usernameOnChangeHandler} />
+                            <span className="inputsDescr"> Previous name: {username}</span><br />
+                            <input type="text" name="username" placeholder="new username" onChange={this.usernameOnChangeHandler} />
                             {usernameError && <div className="validateInputs">{usernameError}</div>}
                         </div>
                         <div>
-                            <input type="email" name="email" placeholder="E-mail*" onChange={this.emailOnChangeHandler} />
+                            <span className="inputsDescr"> Previous email: {email}</span><br />
+                            <input type="email" name="email" placeholder="new e-mail" onChange={this.emailOnChangeHandler} />
                             {emailError && <div className="validateInputs">{emailError}</div>}
                         </div>
                         <div>
-                            <input type="password" name="password" placeholder="Password*" onChange={this.passwordOnChangeHandler} />
-                            {passwordError && <div className="validateInputs">{passwordError}</div>}
-                        </div>
-                        <div>
-                            <input type="text" name="imageUrl" placeholder="Image url" onChange={this.imageOnChangeHandler} />
+                            <span className="inputsDescr"> Previous image: {imageUrl}</span><br />
+                            <input type="text" name="imageUrl" placeholder="new image url" onChange={this.imageOnChangeHandler} />
                             {imageError && <div className="validateInputs">{imageError}</div>}
                         </div>
                         <div>
-                            <textarea name="userDescription" placeholder="Something about you" onChange={this.userDescriptionOnChangeHandler}></textarea>
+                            <textarea name="userDescription" placeholder="Something about you" onChange={this.userDescriptionOnChangeHandler}>{userDescription}</textarea>
                         </div>
                         <div className="button-formAction">
-                            <button type="button" onClick={this.submitHandler}>Register</button>
+                            <button type="button" onClick={this.submitHandler}> EDIT </button>
+                            <Link to="/profile"><button type="button">BACK</button></Link>
                         </div>
                     </form>
                 </div>
@@ -98,4 +106,4 @@ const schema = yup.object({
         .default('No description yet.')
 });
 
-export default withForm(Register, initialFormState, schema)
+export default withForm(EditProfile, initialFormState, schema)
