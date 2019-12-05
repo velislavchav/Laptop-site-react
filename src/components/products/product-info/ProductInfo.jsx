@@ -1,6 +1,7 @@
 import React, { Fragment, Component } from 'react'
 import { Link } from 'react-router-dom'
 import userServices from '../../shared/helpers/userService'
+import { getCookie } from '../../shared/helpers/cookieSetter'
 import "./productInfo.css"
 
 class ProductInfo extends Component {
@@ -9,7 +10,13 @@ class ProductInfo extends Component {
     async componentDidMount() {
         const productId = await this.props.match.params.id;
         const product = await userServices.loadProduct(productId);
-        await this.setState(product)
+        await this.setState(product);
+        let isUserCreator = false;
+        let currentUser = atob(getCookie('usrinf'))
+        if (currentUser === product._acl.creator) {
+            isUserCreator = true;
+        }
+        await this.setState({ isUserCreator })
     }
 
     render() {
@@ -64,6 +71,7 @@ class ProductInfo extends Component {
                         </table>
                     </div>
                     <div id="btnBackToAllProducts">
+                        {this.state.isUserCreator && <Link to="/delete-confirmation"><button> DELETE </button></Link>}
                         <Link to="/products"><button>BACK TO ALL PRODUCTS</button></Link>
                     </div>
                 </div>

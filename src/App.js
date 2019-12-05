@@ -1,20 +1,20 @@
 import React, { Fragment, Component } from 'react';
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import userService from './components/shared/helpers/userService';
-
+// components
 import Navigation from './components/navigation/Navigation'
 import About from './components/about/About'
 import Products from './components/products/Products'
 import ProductInfo from './components/products/product-info/ProductInfo';
-import Register from './components/user-panel/Register';
-import Login from './components/user-panel/Login';
-import Create from './components/user-panel/CreateProduct';
+import Register from './components/user/Register';
+import Login from './components/user/Login';
+import Create from './components/user/CreateProduct';
 import Slider from './components/gallery/Slider';
 import Home from './components/home/Home';
-import Profile from './components/user-panel/profile/profile';
-import EditProfile from './components/user-panel/EditProfile';
+import Profile from './components/user/profile/profile';
+import EditProfile from './components/user/EditProfile';
 import NotFound from './components/notFound/notFound';
-
+import DeleteConfirmation from './components/products/DeleteConfirmation';
 
 function render(Cmp, otherProps) {
   return function (props) {
@@ -73,6 +73,8 @@ class App extends Component {
             <Route path="/about" exact strict component={About} />
             <Route path="/product/:id" exact strict component={ProductInfo} />
             <Route path="/register" exact strict render={render(Register, { isLogged })} />
+            <Route path="/delete-confirmation" exact strict component={DeleteConfirmation} />
+
             {/* <Route path="/register" exact strict component={Register} /> */}
             <Route path="/login" exact strict render={render(Login, { isLogged, login: this.login })} />
             {/* <Route path="/login" exact strict component={Login}  /> */}

@@ -1,0 +1,28 @@
+h1.AboutUsHeader{
+    text-align: center;
+    /* color:white; */
+    font-size:50px;
+    padding-top: 30px;
+}
+h2.AboutUsHeader2{
+    text-align: center;
+    /* color:white; */
+    font-size:40px;
+}
+img.ConntactUsIcons{
+    height:50%;
+    width:50%;
+}
+
+table.AboutUsInfo{
+    text-align: center;
+}
+p.ConntactUsNEA{
+    font-size: 30px;
+    font-family: "Times New Roman", Times, serif ;
+}
+
+iframe.ClockInline{
+    display:inline-block;
+    right:0px;
+}

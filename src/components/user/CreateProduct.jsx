@@ -69,16 +69,16 @@ class CreateProduct extends Component {
                             {GPUError && <div className="validateInputs">{GPUError}</div>}
                         </div>
                         <div>
-                            <input type="text" name="HDD" placeholder="HDD" onChange={this.HDDOnChangeHandler} />
+                            <input type="number" min="100" max="5000" name="HDD" placeholder="HDD" onChange={this.HDDOnChangeHandler} />
                             {HDDError && <div className="validateInputs">{HDDError}</div>}
                         </div>
                         <div>
-                            <input type="text" name="RAM" placeholder="RAM" onChange={this.RAMOnChangeHandler} />
+                            <input type="number" min="2" max="64" name="RAM" placeholder="RAM" onChange={this.RAMOnChangeHandler} />
                             {RAMError && <div className="validateInputs">{RAMError}</div>}
                         </div>
 
                         <div>
-                            <input type="text" name="SSD" placeholder="SSD" onChange={this.SSDOnChangeHandler} />
+                            <input type="number" min="0" max="2500" name="SSD" placeholder="SSD" onChange={this.SSDOnChangeHandler} />
                             {SSDError && <div className="validateInputs">{SSDError}</div>}
                         </div>
                         <div>
@@ -111,9 +111,9 @@ const initialFormState = {
     imageUrl: "https://logox.com/logox/uploads/noimage300X300.jpg",
     CPU: null,
     GPU: null,
-    HDD: null,
-    RAM: null,
-    SSD: null,
+    HDD: 100,
+    RAM: 2,
+    SSD: 0,
     weight: 0,
     warranty: 2,
     price: 1,
@@ -136,17 +136,18 @@ const schema = yup.object({
         .required('GPU is required')
         .min(3, 'GPU should be more than 3 chars'),
 
-    HDD: yup.string('HDD shoud be a string')
+    HDD: yup.number('HDD shoud be a number')
         .required('HDD is required')
-        .min(3, 'HDD should be more than 3 chars'),
+        .min(100).max(5000),
 
-    RAM: yup.string('RAM shoud be a string')
+    RAM: yup.number('RAM shoud be a number')
         .required('RAM is required')
-        .min(1, 'RAM should be more than 1 chars'),
+        .min(2).max(64),
 
-    SSD: yup.string('SSD shoud be a string')
-        .required('SSD is required')
-        .min(2, 'SSD should be more than 2 chars'),
+    SSD: yup.number('SSD shoud be a number')
+        .min(0).max(2500)
+        .default(0),
+
 
     weight: yup.number('Weight shoud be a number')
         .required('Weight is required')
