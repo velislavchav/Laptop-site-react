@@ -82,6 +82,7 @@ textarea {
 
 /* spans */
 
-.inputsDescr {
-  color: red;
+span.inputsDescr {
+  color: yellow;
+  width: 300px;
 }

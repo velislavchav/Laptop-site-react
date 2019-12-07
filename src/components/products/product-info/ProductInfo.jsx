@@ -6,7 +6,6 @@ import "./productInfo.css"
 
 class ProductInfo extends Component {
     state = {}
-
     async componentDidMount() {
         const productId = await this.props.match.params.id;
         const product = await userServices.loadProduct(productId);
@@ -20,6 +19,7 @@ class ProductInfo extends Component {
     }
 
     render() {
+        const id = this.state._id;
         return (
             <Fragment>
                 <div className="imgLeft">
@@ -71,7 +71,10 @@ class ProductInfo extends Component {
                         </table>
                     </div>
                     <div id="btnBackToAllProducts">
-                        {this.state.isUserCreator && <Link to="/delete-confirmation"><button> DELETE </button></Link>}
+                        {this.state.isUserCreator && <Link to={{
+                            pathname: '/delete-confirmation',
+                            state: { id }
+                        }}><button id={id}> DELETE </button></Link>}
                         <Link to="/products"><button>BACK TO ALL PRODUCTS</button></Link>
                     </div>
                 </div>

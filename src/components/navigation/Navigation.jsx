@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link } from "react-router-dom";
+import { getCookie } from "../shared/helpers/cookieSetter"
 import "./navigation.css"
 import logo from "./logo.png"
 import userService from '../shared/helpers/userService';
@@ -8,7 +9,8 @@ const handleClickLogout = () => {
     userService.logout();
 }
 
-const Navigation = ({ isLogged }) => {
+const Navigation = () => {
+    const isLogged = !!getCookie('x-auth-token')
     return (
         <header id="flex">
             <Link to="/"><img src={logo} id="logoNavbar" alt="logo" /></Link>

@@ -56,7 +56,6 @@ const userService = {
 
     createProduct: (data) => {
         const tokenForCreatingProduct = 'Kinvey ' + getCookie('kinveyAuth');
-
         return fetch(`${url}/appdata/${appKey}/products`, {
             body: JSON.stringify(data),
             method: 'POST',
@@ -67,6 +66,24 @@ const userService = {
         }).then(res => {
             return res.json()
         })
+    },
+
+    deleteProduct: (id) => {
+        const token = 'Kinvey ' + getCookie('kinveyAuth');
+        return fetch(`${url}/appdata/${appKey}/products/${id}`, {
+            method: 'DELETE',
+            headers: {
+                'Content-type': 'application/json',
+                'Authorization': token,
+            },
+        }).then(res => {
+            if (res.status >= 200 && res.status < 400) {
+                alert("Successfully delete product")
+            } else {
+                return Promise.reject()
+            }
+        }
+        )
     },
 
     loadAllProducts: async () => {
@@ -107,6 +124,19 @@ const userService = {
         res = await res.json();
         return res;
     },
+
+    editProfile: async (data) => {
+        const token = await 'Kinvey ' + getCookie('kinveyAuth');
+        return fetch(`${url}/user/${appKey}/${data._id}`, {
+            body: JSON.stringify(data),
+            method: 'PUT',
+            headers: {
+                'Content-type': 'application/json',
+                'Authorization': token
+            }
+        })
+            .then(res => res.json())
+    }
 };
 
 export default userService;

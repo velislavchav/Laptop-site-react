@@ -69,7 +69,7 @@ class CreateProduct extends Component {
                             {GPUError && <div className="validateInputs">{GPUError}</div>}
                         </div>
                         <div>
-                            <input type="number" min="100" max="5000" name="HDD" placeholder="HDD" onChange={this.HDDOnChangeHandler} />
+                            <input type="number" min={0} max="5000" name="HDD" placeholder="HDD" onChange={this.HDDOnChangeHandler} />
                             {HDDError && <div className="validateInputs">{HDDError}</div>}
                         </div>
                         <div>
@@ -78,7 +78,7 @@ class CreateProduct extends Component {
                         </div>
 
                         <div>
-                            <input type="number" min="0" max="2500" name="SSD" placeholder="SSD" onChange={this.SSDOnChangeHandler} />
+                            <input type="number" min={0} max="2500" name="SSD" placeholder="SSD" onChange={this.SSDOnChangeHandler} />
                             {SSDError && <div className="validateInputs">{SSDError}</div>}
                         </div>
                         <div>
@@ -111,7 +111,7 @@ const initialFormState = {
     imageUrl: "https://logox.com/logox/uploads/noimage300X300.jpg",
     CPU: null,
     GPU: null,
-    HDD: 100,
+    HDD: 0,
     RAM: 2,
     SSD: 0,
     weight: 0,
@@ -138,13 +138,14 @@ const schema = yup.object({
 
     HDD: yup.number('HDD shoud be a number')
         .required('HDD is required')
-        .min(100).max(5000),
+        .min(0).max(5000),
 
     RAM: yup.number('RAM shoud be a number')
         .required('RAM is required')
         .min(2).max(64),
 
     SSD: yup.number('SSD shoud be a number')
+        .required('SSD is required')
         .min(0).max(2500)
         .default(0),
 

@@ -12,17 +12,20 @@ class EditProfile extends Component {
     usernameOnChangeHandler = this.props.controlChangeHandlerFactory('username');
     emailOnChangeHandler = this.props.controlChangeHandlerFactory('email');
     passwordOnChangeHandler = this.props.controlChangeHandlerFactory('password');
-    imageOnChangeHandler = this.props.controlChangeHandlerFactory('image');
+    imageOnChangeHandler = this.props.controlChangeHandlerFactory('imageUrl');
     userDescriptionOnChangeHandler = this.props.controlChangeHandlerFactory('userDescription');
 
     submitHandler = async () => {
         await this.props.runValidations()
         const errors = await this.props.getFormErrorState();
         if (!!errors) { return; }
-        // const data = await this.props.getFormState();
-        // await userService.register(data)
-        // await this.props.history.push('/login');
-        // console.log('registered succesfully');
+        const data = await this.props.getFormState();
+        const _id = this.state._id;
+        await userService.editProfile({ ...data, _id })
+        await userService.logout()
+        await this.props.history.push('/');
+        await window.location.reload();
+        await alert('profile edited succesfully')
     };
 
     getFirstControlError = name => {
@@ -40,7 +43,7 @@ class EditProfile extends Component {
         const usernameError = this.getFirstControlError('username');
         const emailError = this.getFirstControlError('email');
         const imageError = this.getFirstControlError('imageUrl');
-        let { username, email, imageUrl, userDescription } = this.state;
+        const { username, email, imageUrl, userDescription } = this.state;
 
         return (
             <Fragment>
@@ -49,17 +52,17 @@ class EditProfile extends Component {
                     <h2 id="titleForm"> Edit profile </h2>
                     <form action="/" method="POST">
                         <div>
-                            <span className="inputsDescr"> Previous name: {username}</span><br />
+                            <span className="inputsDescr"> {username}</span><br />
                             <input type="text" name="username" placeholder="new username" onChange={this.usernameOnChangeHandler} />
                             {usernameError && <div className="validateInputs">{usernameError}</div>}
                         </div>
                         <div>
-                            <span className="inputsDescr"> Previous email: {email}</span><br />
+                            <span className="inputsDescr">  {email}</span><br />
                             <input type="email" name="email" placeholder="new e-mail" onChange={this.emailOnChangeHandler} />
                             {emailError && <div className="validateInputs">{emailError}</div>}
                         </div>
                         <div>
-                            <span className="inputsDescr"> Previous image: {imageUrl}</span><br />
+                            <span className="inputsDescr">  {imageUrl}</span><br />
                             <input type="text" name="imageUrl" placeholder="new image url" onChange={this.imageOnChangeHandler} />
                             {imageError && <div className="validateInputs">{imageError}</div>}
                         </div>
@@ -80,7 +83,6 @@ class EditProfile extends Component {
 const initialFormState = {
     username: "",
     email: "",
-    password: "",
     imageUrl: "http://pngimages.net/sites/default/files/anonymous-user-png-image-83861.png",
     userDescription: "No description yet.",
 };
@@ -89,10 +91,6 @@ const schema = yup.object({
     username: yup.string('Username shoud be a string')
         .required('Username is required')
         .min(4, 'Username should be more than 4 chars'),
-
-    password: yup.string('Password must be a string')
-        .required('Password is required')
-        .min(6, 'Password must be more than 6 chars'),
 
     email: yup.string('Email shoud be string')
         .required('Email is required')

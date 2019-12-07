@@ -1,5 +1,6 @@
 import React, { Fragment, Component } from 'react'
 import withForm from '../shared/hocs/withForm'
+import userService from '../shared/helpers/userService';
 import './styles.css'
 
 class Login extends Component {
@@ -10,7 +11,10 @@ class Login extends Component {
         const errors = await this.props.getFormErrorState();
         if (!!errors) { return; }
         const data = await this.props.getFormState();
-        await this.props.login(this.props.history, data);
+        userService.login(data).then(() => {
+            this.props.history.push('/');
+            window.location.reload();
+        })
     }
 
     render() {

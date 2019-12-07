@@ -11,8 +11,8 @@ const MiniProduct = (props) => {
             <h4>{title}</h4>
             <ul>
                 <li><b>CPU:</b> {CPU} </li>
-                <li><b>GPU:</b> {GPU}</li>
-                <li><b>RAM:</b> {RAM}</li>
+                <li><b>GPU:</b> {GPU} </li>
+                <li><b>RAM:</b> {RAM} GB </li>
             </ul>
             <span> Price: {price} $ </span>
         </div>
