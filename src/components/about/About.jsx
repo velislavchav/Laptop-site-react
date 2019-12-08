@@ -1,9 +1,9 @@
 import React, { Fragment } from 'react'
 import './about.css';
+import GoogleMap from "./GoogleMap"
 import callImage from './call.png'
 import mailImage from './mail.png'
 import officeImage from './office.png'
-
 
 const About = () => {
     return (
@@ -24,19 +24,17 @@ const About = () => {
                     <tr>
                         <td>
                             <p className="ConntactUsNEA">Bulgaria: +359 87 164 6134</p>
-                            <p className="ConntactUsNEA">+359 87 261 0628</p>
                         </td>
                         <td>
-                            <p className="ConntactUsNEA">Laptopbg@abv.bg</p>
-                            <p className="ConntactUsNEA">Laptopbg@gmail.com</p>
+                            <p className="ConntactUsNEA">Laptopshop@gmail.com</p>
                         </td>
                         <td>
-                            <p className="ConntactUsNEA"> Smolyan- 48 Hadji Dimitar Street </p>
-                            <p className="ConntactUsNEA">Sofia- 15 Okolchitsa Street </p>
+                            <p className="ConntactUsNEA"> bul. Bulgaria 138 - Smolyan, Bulgaria </p>
                         </td>
                     </tr>
                 </tbody>
             </table>
+            <GoogleMap />
         </Fragment>
     )
 }
