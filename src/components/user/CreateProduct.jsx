@@ -26,7 +26,7 @@ class CreateProduct extends Component {
             data.imageUrl = "https://logox.com/logox/uploads/noimage300X300.jpg"
         }
         await userService.createProduct(data)
-        await this.props.history.push('/');
+        await this.props.history.push('/products');
     };
 
     getFirstControlError = name => {

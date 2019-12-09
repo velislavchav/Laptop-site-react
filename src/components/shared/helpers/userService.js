@@ -14,7 +14,13 @@ const userService = {
                 'Content-type': 'application/json',
                 'Authorization': authorization
             }
-        }).then(res => res.json())
+        })
+            .then(res => res.json())
+            .then(res => {
+                if (res.error === "UserAlreadyExists") {
+                    return res.error;
+                }
+            })
     },
 
     login: (data) => {
@@ -40,11 +46,9 @@ const userService = {
                     const encodedUserIdCookie = btoa(_id);
                     setCookie('usrinf', encodedUserIdCookie, 3);
                     ///
-                    console.log('login succesfully');
-                } else {
-                    console.log('Invalid username/password, try again');
-                    return Promise.reject();
+                    return 'login succesfully';
                 }
+                return data.error;
             })
     },
 
@@ -63,9 +67,8 @@ const userService = {
                 'Content-type': 'application/json',
                 'Authorization': tokenForCreatingProduct,
             },
-        }).then(res => {
-            return res.json()
-        })
+        }).then(res => res.json())
+            .catch(err => console.log(err))
     },
 
     deleteProduct: (id) => {
@@ -77,9 +80,7 @@ const userService = {
                 'Authorization': token,
             },
         }).then(res => {
-            if (res.status >= 200 && res.status < 400) {
-                alert("Successfully delete product")
-            } else {
+            if (res.status < 200 && res.status > 400) {
                 return Promise.reject()
             }
         }
@@ -136,6 +137,11 @@ const userService = {
             }
         })
             .then(res => res.json())
+            .then(res => {
+                if (res.error === "UserAlreadyExists") {
+                    return res.error;
+                }
+            })
     }
 };
 

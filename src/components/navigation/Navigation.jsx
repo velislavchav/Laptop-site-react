@@ -18,7 +18,7 @@ const Navigation = () => {
                 <ul className="nav__links">
                     <li><Link to="/">Home</Link></li>
                     {isLogged && <li><Link to="/products">Products</Link></li>}
-                    {isLogged && <li><Link to="/create-product">Create</Link></li>}
+                    {isLogged && <li><Link to="/create-product">Create product</Link></li>}
                     {!isLogged && <li><Link to="/register">Register</Link></li>}
                     {!isLogged && <li><Link to="/login">Login</Link></li>}
                     {isLogged && <li><Link to="/profile">Profile</Link></li>}

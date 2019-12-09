@@ -8,7 +8,9 @@ import { getCookie } from "../shared/helpers/cookieSetter"
 import './styles.css'
 
 class EditProfile extends Component {
-    state = {}
+    state = {
+        isEditedSuccessfully: true
+    }
     usernameOnChangeHandler = this.props.controlChangeHandlerFactory('username');
     emailOnChangeHandler = this.props.controlChangeHandlerFactory('email');
     passwordOnChangeHandler = this.props.controlChangeHandlerFactory('password');
@@ -21,11 +23,15 @@ class EditProfile extends Component {
         if (!!errors) { return; }
         const data = await this.props.getFormState();
         const _id = this.state._id;
-        await userService.editProfile({ ...data, _id })
-        await userService.logout()
-        await this.props.history.push('/');
-        await window.location.reload();
-        await alert('profile edited succesfully')
+        const isEditedSuccessfully = await userService.editProfile({ ...data, _id })
+        if (isEditedSuccessfully === "UserAlreadyExists") {
+            await this.setState({ isEditedSuccessfully: false })
+            await console.log(this.state.isEditedSuccessfully);
+        } else {
+            await userService.logout()
+            await this.props.history.push('/');
+            await window.location.reload();
+        }
     };
 
     getFirstControlError = name => {
@@ -43,7 +49,7 @@ class EditProfile extends Component {
         const usernameError = this.getFirstControlError('username');
         const emailError = this.getFirstControlError('email');
         const imageError = this.getFirstControlError('imageUrl');
-        const { username, email, imageUrl, userDescription } = this.state;
+        const { username, email, imageUrl, userDescription, isEditedSuccessfully } = this.state;
 
         return (
             <Fragment>
@@ -51,6 +57,7 @@ class EditProfile extends Component {
                 <div id="formStyling">
                     <h2 id="titleForm"> Edit profile </h2>
                     <form action="/" method="POST">
+                        {!isEditedSuccessfully && <div className="validateInputs"> Username already taken. Change it and try again.</div>}
                         <div>
                             <span className="inputsDescr"> {username}</span><br />
                             <input type="text" name="username" placeholder="new username" onChange={this.usernameOnChangeHandler} />

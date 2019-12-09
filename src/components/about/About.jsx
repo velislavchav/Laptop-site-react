@@ -23,10 +23,10 @@ const About = () => {
                     </tr>
                     <tr>
                         <td>
-                            <p className="ConntactUsNEA">Bulgaria: +359 87 164 6134</p>
+                            <p className="ConntactUsNEA">+359 87 164 6134</p>
                         </td>
                         <td>
-                            <p className="ConntactUsNEA">Laptopshop@gmail.com</p>
+                            <p className="ConntactUsNEA">laptops.managment@gmail.com</p>
                         </td>
                         <td>
                             <p className="ConntactUsNEA"> bul. Bulgaria 138 - Smolyan, Bulgaria </p>

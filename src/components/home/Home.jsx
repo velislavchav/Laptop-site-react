@@ -7,7 +7,7 @@ const Home = () => {
         <div className="image-container">
             <img id="wallpaper" alt="wallpaper" src={image} />
             <div id="wallpaper-title">
-                <h1> Laptops shop </h1>
+                <h1> User's laptops <br />management system </h1>
             </div>
 
         </div>

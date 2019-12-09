@@ -5,6 +5,9 @@ import userService from '../shared/helpers/userService';
 import './styles.css'
 
 class Register extends Component {
+    state = {
+        isUserWithThatName: false,
+    }
     usernameOnChangeHandler = this.props.controlChangeHandlerFactory('username');
     emailOnChangeHandler = this.props.controlChangeHandlerFactory('email');
     passwordOnChangeHandler = this.props.controlChangeHandlerFactory('password');
@@ -19,9 +22,12 @@ class Register extends Component {
         if (data.imageUrl === "") {
             data.imageUrl = "http://pngimages.net/sites/default/files/anonymous-user-png-image-83861.png"
         }
-        await userService.register(data)
-        await this.props.history.push('/login');
-        console.log('registered succesfully');
+        const isValid = await userService.register(data)
+        if (isValid !== "UserAlreadyExists") {
+            await this.props.history.push('/login');
+        } else {
+            this.setState({ isUserWithThatName: true })
+        }
     };
 
     getFirstControlError = name => {
@@ -34,6 +40,7 @@ class Register extends Component {
         const emailError = this.getFirstControlError('email');
         const passwordError = this.getFirstControlError('password');
         const imageError = this.getFirstControlError('imageUrl');
+        const isUsernameTaken = this.state.isUserWithThatName;
 
         return (
             <Fragment>
@@ -42,6 +49,7 @@ class Register extends Component {
                     <h2 id="titleForm"> Register page </h2>
                     <span className="inputsDescr"> Only inputs with "*" are required</span>
                     <form action="/" method="POST">
+                        {isUsernameTaken && <div className="validateInputs"> Username already taken. Change it and try again.</div>}
                         <div>
                             <input type="text" name="username" placeholder="Username*" onChange={this.usernameOnChangeHandler} />
                             {usernameError && <div className="validateInputs">{usernameError}</div>}
