@@ -1,7 +1,7 @@
 import React, { Fragment, Component } from "react";
 import { Link } from "react-router-dom";
-import { getCookie } from "../../shared/helpers/cookieSetter";
-import userService from "../../shared/helpers/userService";
+import { getCookie } from "../../../shared/helpers/cookieSetter";
+import userService from "../../../shared/helpers/userService";
 import MiniProducts from "./products-small/MiniProducts"
 import "./profileStyles.css";
 

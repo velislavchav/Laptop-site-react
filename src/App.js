@@ -1,7 +1,6 @@
 import React, { Fragment, Component } from 'react';
 import { BrowserRouter, Route, Switch } from "react-router-dom";
-// import userService from './components/shared/helpers/userService';
-import { getCookie } from './components/shared/helpers/cookieSetter'
+import { getCookie } from './shared/helpers/cookieSetter'
 // components
 import Navigation from './components/navigation/Navigation'
 import About from './components/about/About'
@@ -26,7 +25,6 @@ class App extends Component {
           <Navigation />
           <Switch>
             <Route path="/" exact component={Home} />
-            {/* <Route path="/products" exact strict render={render(Products, { isLogged })} /> */}
             {isLogged && <Route path="/products" exact strict component={Products} />}
             {isLogged && <Route path="/profile" exact strict component={Profile} />}
             {isLogged && <Route path="/edit-profile" exact strict component={EditProfile} />}
@@ -35,14 +33,12 @@ class App extends Component {
             {!isLogged && <Route path="/register" exact strict component={Register} />}
             {isLogged && <Route path="/delete-confirmation" exact strict component={DeleteConfirmation} />}
             {!isLogged && <Route path="/login" exact strict component={Login} />}
-            {/* <Route path="/login" exact strict component={Login}  /> */}
             <Route path="/gallery" exact strict component={Slider} />
             {isLogged && <Route path="/create-product" exact strict component={Create} />}
             <Route component={NotFound} />
           </Switch>
         </BrowserRouter>
       </Fragment>
-
     );
   }
 }

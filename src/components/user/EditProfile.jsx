@@ -1,9 +1,9 @@
 import React, { Fragment, Component } from 'react'
 import * as yup from 'yup';
-import withForm from '../shared/hocs/withForm'
+import withForm from '../../shared/hocs/withForm'
 import { Link } from 'react-router-dom'
-import userService from '../shared/helpers/userService';
-import { getCookie } from "../shared/helpers/cookieSetter"
+import userService from '../../shared/helpers/userService';
+import { getCookie } from "../../shared/helpers/cookieSetter"
 
 import './styles.css'
 

@@ -1,7 +1,7 @@
 import React, { Fragment, Component } from 'react'
 import { Link } from 'react-router-dom'
-import userServices from '../../shared/helpers/userService'
-import { getCookie } from '../../shared/helpers/cookieSetter'
+import userServices from '../../../shared/helpers/userService'
+import { getCookie } from '../../../shared/helpers/cookieSetter'
 import "./productInfo.css"
 
 class ProductInfo extends Component {

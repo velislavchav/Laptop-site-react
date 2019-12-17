@@ -2,7 +2,6 @@ import React from 'react';
 
 export default function withForm(Cmp, initialState, schema) {
     return class extends React.Component {
-
         state = {
             form: initialState,
             errors: undefined

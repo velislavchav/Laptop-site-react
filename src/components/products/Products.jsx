@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import Grid from '@material-ui/core/Grid';
-import userService from '../shared/helpers/userService';
+import userService from '../../shared/helpers/userService';
 import ProductModel from './ProductModel'
 
 class Products extends Component {

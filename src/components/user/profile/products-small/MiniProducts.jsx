@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import userService from "../../../shared/helpers/userService"
-import { getCookie } from "../../../shared/helpers/cookieSetter";
+import userService from "../../../../shared/helpers/userService"
+import { getCookie } from "../../../../shared/helpers/cookieSetter";
 import MiniProductModel from "./MiniProductModel"
 import "./styles.css"
 

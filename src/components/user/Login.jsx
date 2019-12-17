@@ -1,6 +1,6 @@
 import React, { Fragment, Component } from 'react'
-import withForm from '../shared/hocs/withForm'
-import userService from '../shared/helpers/userService';
+import withForm from '../../shared/hocs/withForm'
+import userService from '../../shared/helpers/userService';
 import './styles.css'
 
 class Login extends Component {

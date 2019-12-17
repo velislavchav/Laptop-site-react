@@ -1,7 +1,7 @@
 import React, { Fragment, Component } from 'react'
 import * as yup from 'yup';
-import withForm from '../shared/hocs/withForm'
-import userService from '../shared/helpers/userService';
+import withForm from '../../shared/hocs/withForm'
+import userService from '../../shared/helpers/userService';
 import './styles.css'
 
 class Register extends Component {
